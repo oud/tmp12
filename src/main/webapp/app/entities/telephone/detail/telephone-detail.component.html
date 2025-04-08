@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (telephone(); as telephoneRef) {
+      <div>
+        <h2 data-cy="telephoneDetailsHeading"><span jhiTranslate="tmp12App.telephone.detail.title">Telephone</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ telephoneRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.codePaysISO">Code Pays ISO</span></dt>
+          <dd>
+            <span>{{ telephoneRef.codePaysISO }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.codeTypeTelephone">Code Type Telephone</span></dt>
+          <dd>
+            <span>{{ telephoneRef.codeTypeTelephone }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.dateDerniereModification">Date Derniere Modification</span></dt>
+          <dd>
+            <span>{{ telephoneRef.dateDerniereModification | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.codeIndicatifPays">Code Indicatif Pays</span></dt>
+          <dd>
+            <span>{{ telephoneRef.codeIndicatifPays }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.numeroTelephone">Numero Telephone</span></dt>
+          <dd>
+            <span>{{ telephoneRef.numeroTelephone }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.codeStatut">Code Statut</span></dt>
+          <dd>
+            <span>{{ telephoneRef.codeStatut }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.dateStatut">Date Statut</span></dt>
+          <dd>
+            <span>{{ telephoneRef.dateStatut }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.codeUsageTelephone">Code Usage Telephone</span></dt>
+          <dd>
+            <span>{{ telephoneRef.codeUsageTelephone }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.pmEntreprise">Pm Entreprise</span></dt>
+          <dd>
+            @if (telephone()!.pmEntreprise) {
+              <div>
+                <a [routerLink]="['/pm-entreprise', telephone()!.pmEntreprise?.id, 'view']">{{ telephoneRef.pmEntreprise?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="tmp12App.telephone.pmEtablissement">Pm Etablissement</span></dt>
+          <dd>
+            @if (telephone()!.pmEtablissement) {
+              <div>
+                <a [routerLink]="['/pm-etablissement', telephone()!.pmEtablissement?.id, 'view']">{{ telephoneRef.pmEtablissement?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/telephone', telephoneRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

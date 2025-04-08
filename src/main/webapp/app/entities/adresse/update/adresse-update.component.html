@@ -1,0 +1,292 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-adresse-heading" data-cy="AdresseCreateUpdateHeading" jhiTranslate="tmp12App.adresse.home.createOrEditLabel">
+        Create or edit a Adresse
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="tmp12App.adresse.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let codePaysISORef = editForm.get('codePaysISO')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_codePaysISO" jhiTranslate="tmp12App.adresse.codePaysISO">Code Pays ISO</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codePaysISO"
+            id="field_codePaysISO"
+            data-cy="codePaysISO"
+            formControlName="codePaysISO"
+          />
+          @if (codePaysISORef.invalid && (codePaysISORef.dirty || codePaysISORef.touched)) {
+            <div>
+              @if (editForm.get('codePaysISO')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let codePostalRef = editForm.get('codePostal')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_codePostal" jhiTranslate="tmp12App.adresse.codePostal">Code Postal</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codePostal"
+            id="field_codePostal"
+            data-cy="codePostal"
+            formControlName="codePostal"
+          />
+          @if (codePostalRef.invalid && (codePostalRef.dirty || codePostalRef.touched)) {
+            <div>
+              @if (editForm.get('codePostal')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let dateDerniereModificationRef = editForm.get('dateDerniereModification')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_dateDerniereModification" jhiTranslate="tmp12App.adresse.dateDerniereModification"
+            >Date Derniere Modification</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateDerniereModification"
+              data-cy="dateDerniereModification"
+              type="text"
+              class="form-control"
+              name="dateDerniereModification"
+              ngbDatepicker
+              #dateDerniereModificationDp="ngbDatepicker"
+              formControlName="dateDerniereModification"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateDerniereModificationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (dateDerniereModificationRef.invalid && (dateDerniereModificationRef.dirty || dateDerniereModificationRef.touched)) {
+            <div>
+              @if (editForm.get('dateDerniereModification')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let libelleCommuneRef = editForm.get('libelleCommune')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_libelleCommune" jhiTranslate="tmp12App.adresse.libelleCommune">Libelle Commune</label>
+          <input
+            type="text"
+            class="form-control"
+            name="libelleCommune"
+            id="field_libelleCommune"
+            data-cy="libelleCommune"
+            formControlName="libelleCommune"
+          />
+          @if (libelleCommuneRef.invalid && (libelleCommuneRef.dirty || libelleCommuneRef.touched)) {
+            <div>
+              @if (editForm.get('libelleCommune')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let ligne1Ref = editForm.get('ligne1')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_ligne1" jhiTranslate="tmp12App.adresse.ligne1">Ligne 1</label>
+          <input type="text" class="form-control" name="ligne1" id="field_ligne1" data-cy="ligne1" formControlName="ligne1" />
+          @if (ligne1Ref.invalid && (ligne1Ref.dirty || ligne1Ref.touched)) {
+            <div>
+              @if (editForm.get('ligne1')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let ligne2Ref = editForm.get('ligne2')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_ligne2" jhiTranslate="tmp12App.adresse.ligne2">Ligne 2</label>
+          <input type="text" class="form-control" name="ligne2" id="field_ligne2" data-cy="ligne2" formControlName="ligne2" />
+          @if (ligne2Ref.invalid && (ligne2Ref.dirty || ligne2Ref.touched)) {
+            <div>
+              @if (editForm.get('ligne2')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let ligne3Ref = editForm.get('ligne3')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_ligne3" jhiTranslate="tmp12App.adresse.ligne3">Ligne 3</label>
+          <input type="text" class="form-control" name="ligne3" id="field_ligne3" data-cy="ligne3" formControlName="ligne3" />
+          @if (ligne3Ref.invalid && (ligne3Ref.dirty || ligne3Ref.touched)) {
+            <div>
+              @if (editForm.get('ligne3')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let ligne4Ref = editForm.get('ligne4')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_ligne4" jhiTranslate="tmp12App.adresse.ligne4">Ligne 4</label>
+          <input type="text" class="form-control" name="ligne4" id="field_ligne4" data-cy="ligne4" formControlName="ligne4" />
+          @if (ligne4Ref.invalid && (ligne4Ref.dirty || ligne4Ref.touched)) {
+            <div>
+              @if (editForm.get('ligne4')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let ligne5Ref = editForm.get('ligne5')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_ligne5" jhiTranslate="tmp12App.adresse.ligne5">Ligne 5</label>
+          <input type="text" class="form-control" name="ligne5" id="field_ligne5" data-cy="ligne5" formControlName="ligne5" />
+          @if (ligne5Ref.invalid && (ligne5Ref.dirty || ligne5Ref.touched)) {
+            <div>
+              @if (editForm.get('ligne5')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let ligne6Ref = editForm.get('ligne6')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_ligne6" jhiTranslate="tmp12App.adresse.ligne6">Ligne 6</label>
+          <input type="text" class="form-control" name="ligne6" id="field_ligne6" data-cy="ligne6" formControlName="ligne6" />
+          @if (ligne6Ref.invalid && (ligne6Ref.dirty || ligne6Ref.touched)) {
+            <div>
+              @if (editForm.get('ligne6')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let ligne7Ref = editForm.get('ligne7')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_ligne7" jhiTranslate="tmp12App.adresse.ligne7">Ligne 7</label>
+          <input type="text" class="form-control" name="ligne7" id="field_ligne7" data-cy="ligne7" formControlName="ligne7" />
+          @if (ligne7Ref.invalid && (ligne7Ref.dirty || ligne7Ref.touched)) {
+            <div>
+              @if (editForm.get('ligne7')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let nombreCourriersPNDRef = editForm.get('nombreCourriersPND')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_nombreCourriersPND" jhiTranslate="tmp12App.adresse.nombreCourriersPND"
+            >Nombre Courriers PND</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nombreCourriersPND"
+            id="field_nombreCourriersPND"
+            data-cy="nombreCourriersPND"
+            formControlName="nombreCourriersPND"
+          />
+          @if (nombreCourriersPNDRef.invalid && (nombreCourriersPNDRef.dirty || nombreCourriersPNDRef.touched)) {
+            <div>
+              @if (editForm.get('nombreCourriersPND')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let codeUsageAdresseRef = editForm.get('codeUsageAdresse')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_codeUsageAdresse" jhiTranslate="tmp12App.adresse.codeUsageAdresse">Code Usage Adresse</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeUsageAdresse"
+            id="field_codeUsageAdresse"
+            data-cy="codeUsageAdresse"
+            formControlName="codeUsageAdresse"
+          />
+          @if (codeUsageAdresseRef.invalid && (codeUsageAdresseRef.dirty || codeUsageAdresseRef.touched)) {
+            <div>
+              @if (editForm.get('codeUsageAdresse')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pmEntreprise" jhiTranslate="tmp12App.adresse.pmEntreprise">Pm Entreprise</label>
+          <select
+            class="form-control"
+            id="field_pmEntreprise"
+            data-cy="pmEntreprise"
+            name="pmEntreprise"
+            formControlName="pmEntreprise"
+            [compareWith]="comparePmEntreprise"
+          >
+            <option [ngValue]="null"></option>
+            @for (pmEntrepriseOption of pmEntreprisesSharedCollection; track $index) {
+              <option [ngValue]="pmEntrepriseOption">{{ pmEntrepriseOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pmEtablissement" jhiTranslate="tmp12App.adresse.pmEtablissement">Pm Etablissement</label>
+          <select
+            class="form-control"
+            id="field_pmEtablissement"
+            data-cy="pmEtablissement"
+            name="pmEtablissement"
+            formControlName="pmEtablissement"
+            [compareWith]="comparePmEtablissement"
+          >
+            <option [ngValue]="null"></option>
+            @for (pmEtablissementOption of pmEtablissementsSharedCollection; track $index) {
+              <option [ngValue]="pmEtablissementOption">{{ pmEtablissementOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

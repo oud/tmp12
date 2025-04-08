@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20250408122224"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "entityTableName": "demande_xrm",
+  "fields": [],
+  "name": "DemandeXRM",
+  "relationships": [
+    {
+      "otherEntityName": "pmEntreprise",
+      "relationshipName": "pmEntreprise",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "miseEnGestion",
+      "relationshipName": "miseEnGestion",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "pmEtablissement",
+      "relationshipName": "pmEtablissements",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

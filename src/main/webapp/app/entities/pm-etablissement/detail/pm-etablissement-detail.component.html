@@ -1,0 +1,126 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pmEtablissement(); as pmEtablissementRef) {
+      <div>
+        <h2 data-cy="pmEtablissementDetailsHeading"><span jhiTranslate="tmp12App.pmEtablissement.detail.title">Pm Etablissement</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.idEtablissementRPG">Id Etablissement RPG</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.idEtablissementRPG }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codePartenaireDistributeur">Code Partenaire Distributeur</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codePartenaireDistributeur }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.numeroSiretSiege">Numero Siret Siege</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.numeroSiretSiege }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codeEtat">Code Etat</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codeEtat }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.libelleEtat">Libelle Etat</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.libelleEtat }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codeCategoriePersonne">Code Categorie Personne</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codeCategoriePersonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.libelleCategoriePersonne">Libelle Categorie Personne</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.libelleCategoriePersonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codeType">Code Type</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codeType }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.dateCreationJuridique">Date Creation Juridique</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.dateCreationJuridique }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.dateEtat">Date Etat</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.dateEtat }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.dateFermetureJuridique">Date Fermeture Juridique</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.dateFermetureJuridique }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codeIDCC">Code IDCC</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codeIDCC }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codeTrancheEffectif">Code Tranche Effectif</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codeTrancheEffectif }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.libelleTrancheEffectif">Libelle Tranche Effectif</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.libelleTrancheEffectif }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.dateCessationActivite">Date Cessation Activite</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.dateCessationActivite }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.dateEffectifOfficiel">Date Effectif Officiel</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.dateEffectifOfficiel }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.effectifOfficiel">Effectif Officiel</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.effectifOfficiel }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codeMotifCessationActivite">Code Motif Cessation Activite</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codeMotifCessationActivite }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.siret">Siret</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.siret }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codeTypeEtablissement">Code Type Etablissement</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codeTypeEtablissement }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.libelleEnseigne">Libelle Enseigne</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.libelleEnseigne }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.codeNIC">Code NIC</span></dt>
+          <dd>
+            <span>{{ pmEtablissementRef.codeNIC }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEtablissement.demandeXRM">Demande XRM</span></dt>
+          <dd>
+            @if (pmEtablissement()!.demandeXRM) {
+              <div>
+                <a [routerLink]="['/demande-xrm', pmEtablissement()!.demandeXRM?.id, 'view']">{{ pmEtablissementRef.demandeXRM?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/pm-etablissement', pmEtablissementRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

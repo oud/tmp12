@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="TelephoneHeading">
+    <span jhiTranslate="tmp12App.telephone.home.title">Telephones</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="tmp12App.telephone.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-telephone"
+        [routerLink]="['/telephone/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tmp12App.telephone.home.createLabel">Create a new Telephone</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (telephones().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="tmp12App.telephone.home.notFound">No Telephones found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codePaysISO">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.codePaysISO">Code Pays ISO</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeTypeTelephone">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.codeTypeTelephone">Code Type Telephone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateDerniereModification">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.dateDerniereModification">Date Derniere Modification</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeIndicatifPays">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.codeIndicatifPays">Code Indicatif Pays</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroTelephone">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.numeroTelephone">Numero Telephone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeStatut">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.codeStatut">Code Statut</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateStatut">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.dateStatut">Date Statut</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeUsageTelephone">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.codeUsageTelephone">Code Usage Telephone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pmEntreprise.id">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.pmEntreprise">Pm Entreprise</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pmEtablissement.id">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.telephone.pmEtablissement">Pm Etablissement</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (telephone of telephones(); track trackId(telephone)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/telephone', telephone.id, 'view']">{{ telephone.id }}</a>
+              </td>
+              <td>{{ telephone.codePaysISO }}</td>
+              <td>{{ telephone.codeTypeTelephone }}</td>
+              <td>{{ telephone.dateDerniereModification | formatMediumDate }}</td>
+              <td>{{ telephone.codeIndicatifPays }}</td>
+              <td>{{ telephone.numeroTelephone }}</td>
+              <td>{{ telephone.codeStatut }}</td>
+              <td>{{ telephone.dateStatut }}</td>
+              <td>{{ telephone.codeUsageTelephone }}</td>
+              <td>
+                @if (telephone.pmEntreprise) {
+                  <div>
+                    <a [routerLink]="['/pm-entreprise', telephone.pmEntreprise.id, 'view']">{{ telephone.pmEntreprise.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (telephone.pmEtablissement) {
+                  <div>
+                    <a [routerLink]="['/pm-etablissement', telephone.pmEtablissement.id, 'view']">{{ telephone.pmEtablissement.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/telephone', telephone.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/telephone', telephone.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(telephone)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

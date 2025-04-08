@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-mise-en-gestion-heading"
+        data-cy="MiseEnGestionCreateUpdateHeading"
+        jhiTranslate="tmp12App.miseEnGestion.home.createOrEditLabel"
+      >
+        Create or edit a Mise En Gestion
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="tmp12App.miseEnGestion.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let typeMEGRef = editForm.get('typeMEG')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_typeMEG" jhiTranslate="tmp12App.miseEnGestion.typeMEG">Type MEG</label>
+          <input type="text" class="form-control" name="typeMEG" id="field_typeMEG" data-cy="typeMEG" formControlName="typeMEG" />
+          @if (typeMEGRef.invalid && (typeMEGRef.dirty || typeMEGRef.touched)) {
+            <div>
+              @if (editForm.get('typeMEG')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let codeOffreRef = editForm.get('codeOffre')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_codeOffre" jhiTranslate="tmp12App.miseEnGestion.codeOffre">Code Offre</label>
+          <input type="text" class="form-control" name="codeOffre" id="field_codeOffre" data-cy="codeOffre" formControlName="codeOffre" />
+          @if (codeOffreRef.invalid && (codeOffreRef.dirty || codeOffreRef.touched)) {
+            <div>
+              @if (editForm.get('codeOffre')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let dateEffetRef = editForm.get('dateEffet')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_dateEffet" jhiTranslate="tmp12App.miseEnGestion.dateEffet">Date Effet</label>
+          <div class="input-group">
+            <input
+              id="field_dateEffet"
+              data-cy="dateEffet"
+              type="text"
+              class="form-control"
+              name="dateEffet"
+              ngbDatepicker
+              #dateEffetDp="ngbDatepicker"
+              formControlName="dateEffet"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateEffetDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (dateEffetRef.invalid && (dateEffetRef.dirty || dateEffetRef.touched)) {
+            <div>
+              @if (editForm.get('dateEffet')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

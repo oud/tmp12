@@ -1,0 +1,273 @@
+<div>
+  <h2 id="page-heading" data-cy="PmEtablissementHeading">
+    <span jhiTranslate="tmp12App.pmEtablissement.home.title">Pm Etablissements</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="tmp12App.pmEtablissement.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-pm-etablissement"
+        [routerLink]="['/pm-etablissement/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tmp12App.pmEtablissement.home.createLabel">Create a new Pm Etablissement</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (pmEtablissements().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="tmp12App.pmEtablissement.home.notFound">No Pm Etablissements found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="idEtablissementRPG">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.idEtablissementRPG">Id Etablissement RPG</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codePartenaireDistributeur">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codePartenaireDistributeur">Code Partenaire Distributeur</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numeroSiretSiege">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.numeroSiretSiege">Numero Siret Siege</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeEtat">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codeEtat">Code Etat</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="libelleEtat">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.libelleEtat">Libelle Etat</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeCategoriePersonne">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codeCategoriePersonne">Code Categorie Personne</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="libelleCategoriePersonne">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.libelleCategoriePersonne">Libelle Categorie Personne</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeType">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codeType">Code Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateCreationJuridique">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.dateCreationJuridique">Date Creation Juridique</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateEtat">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.dateEtat">Date Etat</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateFermetureJuridique">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.dateFermetureJuridique">Date Fermeture Juridique</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeIDCC">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codeIDCC">Code IDCC</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeTrancheEffectif">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codeTrancheEffectif">Code Tranche Effectif</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="libelleTrancheEffectif">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.libelleTrancheEffectif">Libelle Tranche Effectif</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateCessationActivite">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.dateCessationActivite">Date Cessation Activite</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateEffectifOfficiel">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.dateEffectifOfficiel">Date Effectif Officiel</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="effectifOfficiel">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.effectifOfficiel">Effectif Officiel</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeMotifCessationActivite">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codeMotifCessationActivite">Code Motif Cessation Activite</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="siret">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.siret">Siret</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeTypeEtablissement">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codeTypeEtablissement">Code Type Etablissement</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="libelleEnseigne">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.libelleEnseigne">Libelle Enseigne</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeNIC">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.codeNIC">Code NIC</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="demandeXRM.id">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.pmEtablissement.demandeXRM">Demande XRM</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (pmEtablissement of pmEtablissements(); track trackId(pmEtablissement)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/pm-etablissement', pmEtablissement.id, 'view']">{{ pmEtablissement.id }}</a>
+              </td>
+              <td>{{ pmEtablissement.idEtablissementRPG }}</td>
+              <td>{{ pmEtablissement.codePartenaireDistributeur }}</td>
+              <td>{{ pmEtablissement.numeroSiretSiege }}</td>
+              <td>{{ pmEtablissement.codeEtat }}</td>
+              <td>{{ pmEtablissement.libelleEtat }}</td>
+              <td>{{ pmEtablissement.codeCategoriePersonne }}</td>
+              <td>{{ pmEtablissement.libelleCategoriePersonne }}</td>
+              <td>{{ pmEtablissement.codeType }}</td>
+              <td>{{ pmEtablissement.dateCreationJuridique }}</td>
+              <td>{{ pmEtablissement.dateEtat }}</td>
+              <td>{{ pmEtablissement.dateFermetureJuridique }}</td>
+              <td>{{ pmEtablissement.codeIDCC }}</td>
+              <td>{{ pmEtablissement.codeTrancheEffectif }}</td>
+              <td>{{ pmEtablissement.libelleTrancheEffectif }}</td>
+              <td>{{ pmEtablissement.dateCessationActivite }}</td>
+              <td>{{ pmEtablissement.dateEffectifOfficiel }}</td>
+              <td>{{ pmEtablissement.effectifOfficiel }}</td>
+              <td>{{ pmEtablissement.codeMotifCessationActivite }}</td>
+              <td>{{ pmEtablissement.siret }}</td>
+              <td>{{ pmEtablissement.codeTypeEtablissement }}</td>
+              <td>{{ pmEtablissement.libelleEnseigne }}</td>
+              <td>{{ pmEtablissement.codeNIC }}</td>
+              <td>
+                @if (pmEtablissement.demandeXRM) {
+                  <div>
+                    <a [routerLink]="['/demande-xrm', pmEtablissement.demandeXRM.id, 'view']">{{ pmEtablissement.demandeXRM.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/pm-etablissement', pmEtablissement.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/pm-etablissement', pmEtablissement.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(pmEtablissement)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

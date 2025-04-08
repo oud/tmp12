@@ -1,0 +1,122 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (pmEntreprise(); as pmEntrepriseRef) {
+      <div>
+        <h2 data-cy="pmEntrepriseDetailsHeading"><span jhiTranslate="tmp12App.pmEntreprise.detail.title">Pm Entreprise</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.idEntrepriseRPG">Id Entreprise RPG</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.idEntrepriseRPG }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codePartenaireDistributeur">Code Partenaire Distributeur</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codePartenaireDistributeur }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.numeroSiretSiege">Numero Siret Siege</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.numeroSiretSiege }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeEtat">Code Etat</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeEtat }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.libelleEtat">Libelle Etat</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.libelleEtat }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeCategoriePersonne">Code Categorie Personne</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeCategoriePersonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.libelleCategoriePersonne">Libelle Categorie Personne</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.libelleCategoriePersonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeType">Code Type</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeType }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.dateCreationJuridique">Date Creation Juridique</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.dateCreationJuridique | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.dateEtat">Date Etat</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.dateEtat | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.dateFermetureJuridique">Date Fermeture Juridique</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.dateFermetureJuridique | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeTrancheEffectif">Code Tranche Effectif</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeTrancheEffectif }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.libelleTrancheEffectif">Libelle Tranche Effectif</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.libelleTrancheEffectif }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.dateCessationActivite">Date Cessation Activite</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.dateCessationActivite | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.dateEffectifOfficiel">Date Effectif Officiel</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.dateEffectifOfficiel | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.effectifOfficiel">Effectif Officiel</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.effectifOfficiel }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeMotifCessationActivite">Code Motif Cessation Activite</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeMotifCessationActivite }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.siren">Siren</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.siren }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeFormeJuridique">Code Forme Juridique</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeFormeJuridique }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.raisonSociale">Raison Sociale</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.raisonSociale }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeCategorieJuridique">Code Categorie Juridique</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeCategorieJuridique }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeIDCC">Code IDCC</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeIDCC }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.pmEntreprise.codeAPE">Code APE</span></dt>
+          <dd>
+            <span>{{ pmEntrepriseRef.codeAPE }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/pm-entreprise', pmEntrepriseRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

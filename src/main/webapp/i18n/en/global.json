@@ -8,7 +8,13 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "demandeXrm": "Demande XRM",
+        "miseEnGestion": "Mise En Gestion",
+        "pmEntreprise": "Pm Entreprise",
+        "adresse": "Adresse",
+        "telephone": "Telephone",
+        "email": "Email",
+        "pmEtablissement": "Pm Etablissement"
       },
       "account": {
         "main": "Account",

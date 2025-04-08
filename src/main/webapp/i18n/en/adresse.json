@@ -1,0 +1,38 @@
+{
+  "tmp12App": {
+    "adresse": {
+      "home": {
+        "title": "Adresses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Adresse",
+        "createOrEditLabel": "Create or edit a Adresse",
+        "notFound": "No Adresses found"
+      },
+      "created": "A new Adresse is created with identifier {{ param }}",
+      "updated": "A Adresse is updated with identifier {{ param }}",
+      "deleted": "A Adresse is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Adresse {{ id }}?"
+      },
+      "detail": {
+        "title": "Adresse"
+      },
+      "id": "ID",
+      "codePaysISO": "Code Pays ISO",
+      "codePostal": "Code Postal",
+      "dateDerniereModification": "Date Derniere Modification",
+      "libelleCommune": "Libelle Commune",
+      "ligne1": "Ligne 1",
+      "ligne2": "Ligne 2",
+      "ligne3": "Ligne 3",
+      "ligne4": "Ligne 4",
+      "ligne5": "Ligne 5",
+      "ligne6": "Ligne 6",
+      "ligne7": "Ligne 7",
+      "nombreCourriersPND": "Nombre Courriers PND",
+      "codeUsageAdresse": "Code Usage Adresse",
+      "pmEntreprise": "Pm Entreprise",
+      "pmEtablissement": "Pm Etablissement"
+    }
+  }
+}

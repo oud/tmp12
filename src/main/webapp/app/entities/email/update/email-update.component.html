@@ -1,0 +1,155 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-email-heading" data-cy="EmailCreateUpdateHeading" jhiTranslate="tmp12App.email.home.createOrEditLabel">
+        Create or edit a Email
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="tmp12App.email.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let adresseEmailRef = editForm.get('adresseEmail')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_adresseEmail" jhiTranslate="tmp12App.email.adresseEmail">Adresse Email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="adresseEmail"
+            id="field_adresseEmail"
+            data-cy="adresseEmail"
+            formControlName="adresseEmail"
+          />
+          @if (adresseEmailRef.invalid && (adresseEmailRef.dirty || adresseEmailRef.touched)) {
+            <div>
+              @if (editForm.get('adresseEmail')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let codeStatutRef = editForm.get('codeStatut')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_codeStatut" jhiTranslate="tmp12App.email.codeStatut">Code Statut</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeStatut"
+            id="field_codeStatut"
+            data-cy="codeStatut"
+            formControlName="codeStatut"
+          />
+          @if (codeStatutRef.invalid && (codeStatutRef.dirty || codeStatutRef.touched)) {
+            <div>
+              @if (editForm.get('codeStatut')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let dateStatutRef = editForm.get('dateStatut')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_dateStatut" jhiTranslate="tmp12App.email.dateStatut">Date Statut</label>
+          <div class="input-group">
+            <input
+              id="field_dateStatut"
+              data-cy="dateStatut"
+              type="text"
+              class="form-control"
+              name="dateStatut"
+              ngbDatepicker
+              #dateStatutDp="ngbDatepicker"
+              formControlName="dateStatut"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateStatutDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (dateStatutRef.invalid && (dateStatutRef.dirty || dateStatutRef.touched)) {
+            <div>
+              @if (editForm.get('dateStatut')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let codeUsageEmailRef = editForm.get('codeUsageEmail')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_codeUsageEmail" jhiTranslate="tmp12App.email.codeUsageEmail">Code Usage Email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeUsageEmail"
+            id="field_codeUsageEmail"
+            data-cy="codeUsageEmail"
+            formControlName="codeUsageEmail"
+          />
+          @if (codeUsageEmailRef.invalid && (codeUsageEmailRef.dirty || codeUsageEmailRef.touched)) {
+            <div>
+              @if (editForm.get('codeUsageEmail')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pmEntreprise" jhiTranslate="tmp12App.email.pmEntreprise">Pm Entreprise</label>
+          <select
+            class="form-control"
+            id="field_pmEntreprise"
+            data-cy="pmEntreprise"
+            name="pmEntreprise"
+            formControlName="pmEntreprise"
+            [compareWith]="comparePmEntreprise"
+          >
+            <option [ngValue]="null"></option>
+            @for (pmEntrepriseOption of pmEntreprisesSharedCollection; track $index) {
+              <option [ngValue]="pmEntrepriseOption">{{ pmEntrepriseOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pmEtablissement" jhiTranslate="tmp12App.email.pmEtablissement">Pm Etablissement</label>
+          <select
+            class="form-control"
+            id="field_pmEtablissement"
+            data-cy="pmEtablissement"
+            name="pmEtablissement"
+            formControlName="pmEtablissement"
+            [compareWith]="comparePmEtablissement"
+          >
+            <option [ngValue]="null"></option>
+            @for (pmEtablissementOption of pmEtablissementsSharedCollection; track $index) {
+              <option [ngValue]="pmEtablissementOption">{{ pmEtablissementOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

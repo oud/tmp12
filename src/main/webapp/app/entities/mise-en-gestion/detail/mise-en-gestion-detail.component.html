@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (miseEnGestion(); as miseEnGestionRef) {
+      <div>
+        <h2 data-cy="miseEnGestionDetailsHeading"><span jhiTranslate="tmp12App.miseEnGestion.detail.title">Mise En Gestion</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ miseEnGestionRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.miseEnGestion.typeMEG">Type MEG</span></dt>
+          <dd>
+            <span>{{ miseEnGestionRef.typeMEG }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.miseEnGestion.codeOffre">Code Offre</span></dt>
+          <dd>
+            <span>{{ miseEnGestionRef.codeOffre }}</span>
+          </dd>
+          <dt><span jhiTranslate="tmp12App.miseEnGestion.dateEffet">Date Effet</span></dt>
+          <dd>
+            <span>{{ miseEnGestionRef.dateEffet | formatMediumDate }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/mise-en-gestion', miseEnGestionRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
