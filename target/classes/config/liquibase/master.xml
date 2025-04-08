@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="floatType" value="float4" dbms="h2"/>
+    <property name="uuidType" value="uuid" dbms="h2"/>
+    <property name="datetimeType" value="datetime(6)" dbms="h2"/>
+    <property name="timeType" value="time(6)" dbms="h2"/>
+    <property name="clobType" value="clob" dbms="h2"/>
+    <property name="blobType" value="blob" dbms="h2"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+    <property name="floatType" value="float" dbms="oracle"/>
+    <property name="clobType" value="clob" dbms="oracle"/>
+    <property name="blobType" value="blob" dbms="oracle"/>
+    <property name="uuidType" value="uuid" dbms="oracle"/>
+    <property name="datetimeType" value="datetime" dbms="oracle"/>
+    <property name="timeType" value="time" dbms="oracle"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122224_added_entity_DemandeXRM.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122225_added_entity_MiseEnGestion.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122226_added_entity_PmEntreprise.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122227_added_entity_Adresse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122228_added_entity_Telephone.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122229_added_entity_Email.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122230_added_entity_PmEtablissement.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20250408122224_added_entity_constraints_DemandeXRM.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122227_added_entity_constraints_Adresse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122228_added_entity_constraints_Telephone.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122229_added_entity_constraints_Email.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250408122230_added_entity_constraints_PmEtablissement.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>
