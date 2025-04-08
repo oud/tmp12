@@ -55,7 +55,6 @@ local.properties
 *.ipr
 *.ids
 *.orig
-#classes/
 out/
 
 ######################
@@ -81,7 +80,6 @@ out/
 /target/maven-status
 /target/surefire-reports
 /target/test-classes
-
 ######################
 # Gradle
 ######################
@@ -134,7 +132,7 @@ Desktop.ini
 ######################
 # Others
 ######################
-*.class
+#*.class
 *.*~
 *~
 .merge_file*
