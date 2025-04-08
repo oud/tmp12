@@ -1,0 +1,50 @@
+{
+  "tmp12App": {
+    "pmEntreprise": {
+      "home": {
+        "title": "Pm Entreprises",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pm Entreprise",
+        "createOrEditLabel": "Create or edit a Pm Entreprise",
+        "notFound": "No Pm Entreprises found"
+      },
+      "created": "A new Pm Entreprise is created with identifier {{ param }}",
+      "updated": "A Pm Entreprise is updated with identifier {{ param }}",
+      "deleted": "A Pm Entreprise is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pm Entreprise {{ id }}?"
+      },
+      "detail": {
+        "title": "Pm Entreprise"
+      },
+      "id": "ID",
+      "idEntrepriseRPG": "Id Entreprise RPG",
+      "codePartenaireDistributeur": "Code Partenaire Distributeur",
+      "numeroSiretSiege": "Numero Siret Siege",
+      "codeEtat": "Code Etat",
+      "libelleEtat": "Libelle Etat",
+      "codeCategoriePersonne": "Code Categorie Personne",
+      "libelleCategoriePersonne": "Libelle Categorie Personne",
+      "codeType": "Code Type",
+      "dateCreationJuridique": "Date Creation Juridique",
+      "dateEtat": "Date Etat",
+      "dateFermetureJuridique": "Date Fermeture Juridique",
+      "codeTrancheEffectif": "Code Tranche Effectif",
+      "libelleTrancheEffectif": "Libelle Tranche Effectif",
+      "dateCessationActivite": "Date Cessation Activite",
+      "dateEffectifOfficiel": "Date Effectif Officiel",
+      "effectifOfficiel": "Effectif Officiel",
+      "codeMotifCessationActivite": "Code Motif Cessation Activite",
+      "siren": "Siren",
+      "codeFormeJuridique": "Code Forme Juridique",
+      "raisonSociale": "Raison Sociale",
+      "codeCategorieJuridique": "Code Categorie Juridique",
+      "codeIDCC": "Code IDCC",
+      "codeAPE": "Code APE",
+      "adresses": "Adresses",
+      "emails": "Emails",
+      "telephones": "Telephones",
+      "demandeXRM": "Demande XRM"
+    }
+  }
+}

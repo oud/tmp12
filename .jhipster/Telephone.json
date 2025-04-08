@@ -1,0 +1,54 @@
+{
+  "annotations": {
+    "changelogDate": "20250408122228"
+  },
+  "applications": "*",
+  "documentation": "not an ignored comment",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "codePaysISO",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeTypeTelephone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDerniereModification",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeIndicatifPays",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numeroTelephone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeStatut",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateStatut",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeUsageTelephone",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Telephone",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

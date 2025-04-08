@@ -41,6 +41,20 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.repository.UserRepository.USERS_BY_LOGIN_CACHE);
             createCache(cm, com.mycompany.myapp.repository.UserRepository.USERS_BY_EMAIL_CACHE);
             createCache(cm, com.mycompany.myapp.domain.Authority.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.DemandeXRM.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.DemandeXRM.class.getName() + ".pmEtablissements");
+            createCache(cm, com.mycompany.myapp.domain.MiseEnGestion.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PmEntreprise.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PmEntreprise.class.getName() + ".adresses");
+            createCache(cm, com.mycompany.myapp.domain.PmEntreprise.class.getName() + ".emails");
+            createCache(cm, com.mycompany.myapp.domain.PmEntreprise.class.getName() + ".telephones");
+            createCache(cm, com.mycompany.myapp.domain.Adresse.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Telephone.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Email.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PmEtablissement.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PmEtablissement.class.getName() + ".adresses");
+            createCache(cm, com.mycompany.myapp.domain.PmEtablissement.class.getName() + ".emails");
+            createCache(cm, com.mycompany.myapp.domain.PmEtablissement.class.getName() + ".telephones");
             // jhipster-needle-ehcache-add-entry
         };
     }

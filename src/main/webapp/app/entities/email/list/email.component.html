@@ -1,0 +1,134 @@
+<div>
+  <h2 id="page-heading" data-cy="EmailHeading">
+    <span jhiTranslate="tmp12App.email.home.title">Emails</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="tmp12App.email.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-email"
+        [routerLink]="['/email/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tmp12App.email.home.createLabel">Create a new Email</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (emails().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="tmp12App.email.home.notFound">No Emails found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="adresseEmail">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.email.adresseEmail">Adresse Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeStatut">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.email.codeStatut">Code Statut</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateStatut">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.email.dateStatut">Date Statut</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeUsageEmail">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.email.codeUsageEmail">Code Usage Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pmEntreprise.id">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.email.pmEntreprise">Pm Entreprise</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pmEtablissement.id">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.email.pmEtablissement">Pm Etablissement</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (email of emails(); track trackId(email)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/email', email.id, 'view']">{{ email.id }}</a>
+              </td>
+              <td>{{ email.adresseEmail }}</td>
+              <td>{{ email.codeStatut }}</td>
+              <td>{{ email.dateStatut | formatMediumDate }}</td>
+              <td>{{ email.codeUsageEmail }}</td>
+              <td>
+                @if (email.pmEntreprise) {
+                  <div>
+                    <a [routerLink]="['/pm-entreprise', email.pmEntreprise.id, 'view']">{{ email.pmEntreprise.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (email.pmEtablissement) {
+                  <div>
+                    <a [routerLink]="['/pm-etablissement', email.pmEtablissement.id, 'view']">{{ email.pmEtablissement.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/email', email.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/email', email.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(email)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

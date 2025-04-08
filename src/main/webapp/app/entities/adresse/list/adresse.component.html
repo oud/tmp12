@@ -1,0 +1,206 @@
+<div>
+  <h2 id="page-heading" data-cy="AdresseHeading">
+    <span jhiTranslate="tmp12App.adresse.home.title">Adresses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="tmp12App.adresse.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-adresse"
+        [routerLink]="['/adresse/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tmp12App.adresse.home.createLabel">Create a new Adresse</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (adresses().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="tmp12App.adresse.home.notFound">No Adresses found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codePaysISO">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.codePaysISO">Code Pays ISO</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codePostal">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.codePostal">Code Postal</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateDerniereModification">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.dateDerniereModification">Date Derniere Modification</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="libelleCommune">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.libelleCommune">Libelle Commune</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ligne1">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.ligne1">Ligne 1</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ligne2">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.ligne2">Ligne 2</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ligne3">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.ligne3">Ligne 3</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ligne4">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.ligne4">Ligne 4</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ligne5">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.ligne5">Ligne 5</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ligne6">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.ligne6">Ligne 6</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ligne7">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.ligne7">Ligne 7</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombreCourriersPND">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.nombreCourriersPND">Nombre Courriers PND</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeUsageAdresse">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.codeUsageAdresse">Code Usage Adresse</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pmEntreprise.id">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.pmEntreprise">Pm Entreprise</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="pmEtablissement.id">
+              <div class="d-flex">
+                <span jhiTranslate="tmp12App.adresse.pmEtablissement">Pm Etablissement</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (adresse of adresses(); track trackId(adresse)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/adresse', adresse.id, 'view']">{{ adresse.id }}</a>
+              </td>
+              <td>{{ adresse.codePaysISO }}</td>
+              <td>{{ adresse.codePostal }}</td>
+              <td>{{ adresse.dateDerniereModification | formatMediumDate }}</td>
+              <td>{{ adresse.libelleCommune }}</td>
+              <td>{{ adresse.ligne1 }}</td>
+              <td>{{ adresse.ligne2 }}</td>
+              <td>{{ adresse.ligne3 }}</td>
+              <td>{{ adresse.ligne4 }}</td>
+              <td>{{ adresse.ligne5 }}</td>
+              <td>{{ adresse.ligne6 }}</td>
+              <td>{{ adresse.ligne7 }}</td>
+              <td>{{ adresse.nombreCourriersPND }}</td>
+              <td>{{ adresse.codeUsageAdresse }}</td>
+              <td>
+                @if (adresse.pmEntreprise) {
+                  <div>
+                    <a [routerLink]="['/pm-entreprise', adresse.pmEntreprise.id, 'view']">{{ adresse.pmEntreprise.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (adresse.pmEtablissement) {
+                  <div>
+                    <a [routerLink]="['/pm-etablissement', adresse.pmEtablissement.id, 'view']">{{ adresse.pmEtablissement.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/adresse', adresse.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/adresse', adresse.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(adresse)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

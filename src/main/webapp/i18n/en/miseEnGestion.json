@@ -1,0 +1,27 @@
+{
+  "tmp12App": {
+    "miseEnGestion": {
+      "home": {
+        "title": "Mise En Gestions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Mise En Gestion",
+        "createOrEditLabel": "Create or edit a Mise En Gestion",
+        "notFound": "No Mise En Gestions found"
+      },
+      "created": "A new Mise En Gestion is created with identifier {{ param }}",
+      "updated": "A Mise En Gestion is updated with identifier {{ param }}",
+      "deleted": "A Mise En Gestion is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Mise En Gestion {{ id }}?"
+      },
+      "detail": {
+        "title": "Mise En Gestion"
+      },
+      "id": "ID",
+      "typeMEG": "Type MEG",
+      "codeOffre": "Code Offre",
+      "dateEffet": "Date Effet",
+      "demandeXRM": "Demande XRM"
+    }
+  }
+}

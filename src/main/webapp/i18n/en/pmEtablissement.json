@@ -1,0 +1,49 @@
+{
+  "tmp12App": {
+    "pmEtablissement": {
+      "home": {
+        "title": "Pm Etablissements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pm Etablissement",
+        "createOrEditLabel": "Create or edit a Pm Etablissement",
+        "notFound": "No Pm Etablissements found"
+      },
+      "created": "A new Pm Etablissement is created with identifier {{ param }}",
+      "updated": "A Pm Etablissement is updated with identifier {{ param }}",
+      "deleted": "A Pm Etablissement is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pm Etablissement {{ id }}?"
+      },
+      "detail": {
+        "title": "Pm Etablissement"
+      },
+      "id": "ID",
+      "idEtablissementRPG": "Id Etablissement RPG",
+      "codePartenaireDistributeur": "Code Partenaire Distributeur",
+      "numeroSiretSiege": "Numero Siret Siege",
+      "codeEtat": "Code Etat",
+      "libelleEtat": "Libelle Etat",
+      "codeCategoriePersonne": "Code Categorie Personne",
+      "libelleCategoriePersonne": "Libelle Categorie Personne",
+      "codeType": "Code Type",
+      "dateCreationJuridique": "Date Creation Juridique",
+      "dateEtat": "Date Etat",
+      "dateFermetureJuridique": "Date Fermeture Juridique",
+      "codeIDCC": "Code IDCC",
+      "codeTrancheEffectif": "Code Tranche Effectif",
+      "libelleTrancheEffectif": "Libelle Tranche Effectif",
+      "dateCessationActivite": "Date Cessation Activite",
+      "dateEffectifOfficiel": "Date Effectif Officiel",
+      "effectifOfficiel": "Effectif Officiel",
+      "codeMotifCessationActivite": "Code Motif Cessation Activite",
+      "siret": "Siret",
+      "codeTypeEtablissement": "Code Type Etablissement",
+      "libelleEnseigne": "Libelle Enseigne",
+      "codeNIC": "Code NIC",
+      "adresses": "Adresses",
+      "emails": "Emails",
+      "telephones": "Telephones",
+      "demandeXRM": "Demande XRM"
+    }
+  }
+}
